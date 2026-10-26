@@ -77,6 +77,9 @@ class ReservationController extends Controller
         $reservation = DB::transaction(function () use ($request, $validated, $start, $end, $days) {
             // All reservation writers in this journey serialize on this vehicle row.
             $vehicle = Vehicle::with('agency')->lockForUpdate()->findOrFail($validated['vehicle_id']);
+            if (config('demo.enabled')) {
+                abort_if(Reservation::count() >= 100 || Reservation::where('user_id', $request->user()->id)->whereIn('status', ['pending','confirmed'])->count() >= 10, 429, 'La démonstration est complète; revenez après sa remise à zéro.');
+            }
             if (! $vehicle->agency || ! $vehicle->agency->isActive() || $vehicle->is_manually_unavailable) {
                 throw ValidationException::withMessages(['vehicle_id' => 'Ce véhicule ou cette agence est indisponible.']);
             }

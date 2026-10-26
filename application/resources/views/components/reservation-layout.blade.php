@@ -9,6 +9,7 @@
 </style>
 </head>
 <body>
+@include('components.public-demo-notice')
 <header><nav aria-label="Navigation principale"><strong>CarLoc<span style="color:#f3bd59">.</span></strong><a href="{{ route('vehicles.index') }}">Véhicules</a><a href="{{ route('reservation.index') }}">Mes réservations</a><a href="{{ route('profile.edit') }}">Mon profil</a></nav></header>
 <main id="main-content">
 @if(session('success'))<div class="notice success" role="status">{{ session('success') }}</div>@endif

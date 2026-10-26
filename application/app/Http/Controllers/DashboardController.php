@@ -18,6 +18,8 @@ class DashboardController extends Controller
     public function index(string $slug): View
     {
         $agency = $this->resolveOwnedAgency($slug);
+        $weekSql=DB::connection()->getDriverName()==='sqlite' ? "CAST((CAST(strftime('%d', start_date) AS INTEGER) - 1) / 7 AS INTEGER) + 1" : 'FLOOR((DAY(start_date) - 1) / 7) + 1';
+        $daySql=DB::connection()->getDriverName()==='sqlite' ? "CASE strftime('%w',start_date) WHEN '0' THEN 'Sunday' WHEN '1' THEN 'Monday' WHEN '2' THEN 'Tuesday' WHEN '3' THEN 'Wednesday' WHEN '4' THEN 'Thursday' WHEN '5' THEN 'Friday' ELSE 'Saturday' END" : 'DAYNAME(start_date)';
 
         $thisMonthData = Reservation::where('agency_id', $agency->id)
             ->whereBetween('start_date', [
@@ -25,7 +27,7 @@ class DashboardController extends Controller
                 now()->copy()->endOfMonth(),
             ])
             ->whereIn('status', ['confirmed', 'completed'])
-            ->selectRaw('FLOOR((DAY(start_date) - 1) / 7) + 1 as week_num, SUM(total_price) as total')
+            ->selectRaw($weekSql.' as week_num, SUM(total_price) as total')
             ->groupBy('week_num')
             ->pluck('total', 'week_num');
 
@@ -36,7 +38,7 @@ class DashboardController extends Controller
                 now()->copy()->subMonthNoOverflow()->endOfMonth(),
             ])
             ->whereIn('status', ['confirmed', 'completed'])
-            ->selectRaw('FLOOR((DAY(start_date) - 1) / 7) + 1 as week_num, SUM(total_price) as total')
+            ->selectRaw($weekSql.' as week_num, SUM(total_price) as total')
             ->groupBy('week_num')
             ->pluck('total', 'week_num');
 
@@ -61,7 +63,7 @@ class DashboardController extends Controller
         // ✅ 3. Reservations by day — 7 derniers jours
         $reservationsParJour = Reservation::where('agency_id', $agency->id)
             ->select(
-                DB::raw('DAYNAME(start_date) as jour'),
+                DB::raw($daySql.' as jour'),
                 DB::raw('COUNT(id) as total')
             )
             ->whereBetween('start_date', [now()->subDays(6)->startOfDay(), now()->endOfDay()])

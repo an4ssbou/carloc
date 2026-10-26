@@ -17,7 +17,8 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->append(SecurityHeaders::class);
-        $middleware->web(append: [EnsureActiveAccount::class, AuthenticateSession::class]);
+        $middleware->web(append: [EnsureActiveAccount::class, AuthenticateSession::class, \App\Http\Middleware\PublicDemoBoundary::class]);
+        $middleware->api(append: [\App\Http\Middleware\PublicDemoBoundary::class]);
         $middleware->alias([
             'super_admin' => EnsureSuperAdmin::class,
         ]);

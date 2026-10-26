@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: carloc-portfolio-demo
+    runtime: docker
+    plan: free
+    branch: portfolio-demo
+    autoDeployTrigger: "off"
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /up
+    envVars:
+      - key: DEMO_MODE
+        value: "true"
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: "false"
+      - key: DB_CONNECTION
+        value: sqlite
+      - key: DB_DATABASE
+        value: /tmp/carloc-demo.sqlite
+      - key: MAIL_MAILER
+        value: array
+      - key: SESSION_SECURE_COOKIE
+        value: "true"

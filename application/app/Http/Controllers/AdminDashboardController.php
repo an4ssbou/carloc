@@ -105,7 +105,7 @@ class AdminDashboardController extends Controller
         );
 
         $monthlyRevenueOverview = Reservation::query()
-            ->selectRaw('DATE_FORMAT(created_at, "%Y-%m") as month_key')
+            ->selectRaw((DB::connection()->getDriverName()==='sqlite' ? "strftime('%Y-%m', created_at)" : 'DATE_FORMAT(created_at, "%Y-%m")').' as month_key')
             ->selectRaw('SUM(total_price) as gross_revenue')
             ->whereIn('status', ['confirmed', 'completed'])
             ->whereBetween('created_at', [now()->copy()->subMonths(6)->startOfMonth(), $endDate])
