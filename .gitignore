@@ -1,0 +1,32 @@
+# Dependencies and generated resources
+/application/vendor/
+/application/node_modules/
+/application/public/build/
+/application/public/hot
+/application/public/storage
+# Configuration and runtime data
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.sql
+*.sqlite*
+*.log
+/application/storage/**
+!/application/storage/**/
+!/application/storage/**/.gitignore
+/application/bootstrap/cache/**
+!/application/bootstrap/cache/.gitignore
+/application/.phpunit.result.cache
+/application/.phpunit.cache/
+# Local tools and editor metadata
+/.codex/
+/.agents/
+/.aws/
+.idea/
+.vscode/
+.DS_Store
+__pycache__/

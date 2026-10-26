@@ -1,0 +1,27 @@
+🚗 CarLoc : une application web pour la location de voitures et la gestion d’agences au Maroc.
+
+Je vous présente mon projet CarLoc, une plateforme qui réunit le parcours de réservation des clients, la gestion de flotte des agences et l’administration.
+
+Mon objectif : faciliter la recherche d’un véhicule et centraliser les opérations de location dans une même interface.
+
+Ce que propose cette version :
+
+🔎 Un catalogue de véhicules avec filtres par ville, transmission et équipement GPS.
+📅 La réservation en ligne et l’annulation pendant les 24 heures suivant sa création.
+🏢 Un espace agence pour gérer les véhicules et les réservations, avec un tableau de bord.
+🔔 Un aperçu des notifications accessible depuis la cloche.
+🔐 Des accès distincts pour les clients, les propriétaires d’agence et l’administration.
+
+📍 Le suivi GPS dispose d’une réception API préparée et d’une actualisation toutes les 5 secondes. La démonstration utilise des positions simulées ; la connexion à un boîtier réel reste une prochaine étape.
+
+Le paiement est également simulé dans cette version locale : aucun débit ni saisie de carte bancaire.
+
+🛠️ Stack technique : Laravel 13, PHP 8.3, MariaDB, Tailwind CSS et Alpine.js.
+
+Le travail porte aussi sur la protection des documents privés, les permissions et les performances. La révision vérifiée compte 89 tests applicatifs et 24 tests indépendants réussis.
+
+Pour illustrer les parcours, la démonstration comprend 25 véhicules, 4 agences, 40 nouveaux clients fictifs et un jeu de 180 réservations réparties sur six mois. Les chiffres affichés ne représentent aucune activité commerciale réelle.
+
+Vos retours sur le parcours de réservation et les fonctionnalités de gestion sont les bienvenus !
+
+#Laravel #DéveloppementWeb #LocationDeVoitures #GestionDeFlotte #ProjetWeb
