@@ -30,3 +30,6 @@
 .vscode/
 .DS_Store
 __pycache__/
+
+# Documentation and screenshots kept locally
+/docs/

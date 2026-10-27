@@ -6,7 +6,7 @@ Les protections vérifiées incluent autorisations par compte/agence, refus des 
 
 ## Secrets et données
 
-`.env`, clés, dumps, uploads, logs, base locale et dépendances installées sont exclus du dépôt. Ne jamais ajouter de jeton à une URL Git, un ticket, une capture ou un exemple. Les identifiants du README sont des exemples synthétiques publics réservés à local/testing. Les photos CC0 illustrent les véhicules fictifs. Les captures montrent exclusivement cette démonstration.
+`.env`, clés, dumps, uploads, logs, base locale et dépendances installées sont exclus du dépôt. Ne jamais ajouter de jeton à une URL Git, un ticket, une capture ou un exemple. Les identifiants du README sont des exemples synthétiques publics réservés à local/testing. Les photos CC0 illustrent les véhicules fictifs.
 
 Pour signaler un défaut, utiliser un canal privé avec le propriétaire du dépôt ; ne pas ouvrir de ticket public contenant des données personnelles, secrets ou instructions d’exploitation sensibles.
 
@@ -18,4 +18,4 @@ Paiement bancaire, remboursement réel, signature électronique, IA d’identit�
 
 ## Contrôles et limites
 
-Les audits de dépendances détectent les avis connus à leur date d’exécution ; ils ne détectent pas toutes les failles métier. Les scans de fichiers préparés recherchent les formats usuels de secrets, sans garantie exhaustive. Aucun test de charge, audit d’infrastructure de production, fuzzing exhaustif ou contrôle de matériel GPS n’est revendiqué. Voir [les résultats datés](docs/verification.md).
+Les audits de dépendances détectent les avis connus à leur date d’exécution ; ils ne détectent pas toutes les failles métier. Les scans de fichiers préparés recherchent les formats usuels de secrets, sans garantie exhaustive. Aucun test de charge, audit d’infrastructure de production, fuzzing exhaustif ou contrôle de matériel GPS n’est revendiqué. Les résultats des suites exécutées le 26 octobre 2026 sont résumés dans le README ; les audits Composer et npm de cette date ne signalaient aucun avis connu.
