@@ -1,3 +1,6 @@
+@if(config('demo.enabled'))
+<div class="max-w-7xl mx-auto px-6 text-sm text-slate-300"><strong>CarLoc — démonstration de portfolio.</strong> Données fictives partagées, aucune offre de location réelle. Aucun contact, inscription ou paiement collecté.</div>
+@else
 
     <div class="grid grid-cols-1 md:grid-cols-4 gap-12 max-w-7xl mx-auto px-6">
         <div>
@@ -44,3 +47,5 @@
             <span>+212 762 73 27 30</span>
         </div>
     </div>
+
+@endif

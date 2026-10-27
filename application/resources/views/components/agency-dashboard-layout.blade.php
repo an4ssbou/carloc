@@ -122,6 +122,7 @@
         </header>
 
         <div class="space-y-8 px-8 pb-12 pt-24">
+            @include('components.public-demo-notice')
             {{ $slot }}
         </div>
     </main>
